@@ -1,0 +1,23 @@
+## Multiprocessor
+
+- Flynn Taxonomy
+  - 单周期/多周期：SISD
+  - 流水线：SIMD（某种程度上）
+  - 多处理器系统：MIMD
+    - 主要看存储器：
+      - 软件 / 物理 存储器是shared还是distributed
+    - 对称多处理器系统：物理上共享存储器，大家访问时间都一样
+      - SMP / UMA
+      - symmetric / uniform / centralized shared memory
+      - 并行编程比较容易：访问共享变量
+    - distributed memory
+      - 软件上可以弄一个大的共享的逻辑地址空间
+        - distribued shared memory：软件加了一层地址映射，使得多处理器看起来像是有共享的地址空间
+          - DSM
+          - NUMA：non-uniform memory access，访问本地存储器很快
+      - 干脆就不能互相访问，用显式的消息传递机制
+        - multiple computer 网络集群系统
+          - 要求并行力度不能太小：消息通信开销大
+          - messege passing
+            - 同步的 / 异步的
+- snoopy协议和目录协议
